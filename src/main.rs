@@ -94,11 +94,6 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
         // Direction::Right,
         Player,
     ));
-    //     commands.spawn(PointLight {
-    //         color:YELLOW.into(),
-    //         intensity: 1000.0,
-    //     ..default()
-    // });
 }
 
 fn sprite_movement(time: Res<Time>, mut sprite_position: Query<(&mut Direction, &mut Transform)>) {
@@ -121,39 +116,6 @@ fn sprite_movement(time: Res<Time>, mut sprite_position: Query<(&mut Direction, 
         }
     }
 }
-
-// fn keyboard_events(
-//     mut evr_kbd: EventReader<KeyboardInput>,
-//     keys: Res<ButtonInput<KeyCode>>,
-//     mut movement_writer: EventWriter<MovementRequest>,
-// ) {
-//     let mut request = MovementRequest::default();
-//     for ev in evr_kbd.read() {
-//         match ev.state {
-//             ButtonState::Pressed => {
-//                 println!("Key press: {:?} ({:?})", ev.key_code, ev.logical_key);
-//                 if keys.pressed(KeyCode::KeyW)  {
-//                     request.up = true;
-//                     // movement_writer.send(request.clone());
-//                 }
-//                 if keys.pressed(KeyCode::KeyS)  {
-//                     request.down = true;
-//                 }
-//                 if keys.pressed(KeyCode::KeyD)  {
-//                     request.right = true;
-//                 }
-//                 if keys.pressed(KeyCode::KeyA)  {
-//                     request.left = true;
-//                 }
-//                 movement_writer.send(request.clone());
-//             }
-//             ButtonState::Released => {
-//                 println!("Key release: {:?} ({:?})", ev.key_code, ev.logical_key);
-//             }
-            
-//         }
-//     }
-// }
 
 fn move_player(
     mut query: Query<&mut Transform, With<Player>>,
