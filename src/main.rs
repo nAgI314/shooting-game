@@ -1,9 +1,9 @@
 use bevy::{
     color::palettes::css::YELLOW,
-
     prelude::*,
 };
 
+mod plugins;
 const WINDOW_SIZE: Vec2 = Vec2::new(640.0, 480.0);
 const GAMETITLE: &str = "shooting";
 
@@ -30,6 +30,8 @@ fn main() {
         .add_systems(Startup, setup)
         .add_systems(Update, sprite_movement)
         .add_systems(Update, move_player)
+        .add_plugins(plugins::enemy::Enemy)
+        // .add_systems(Update, move_enemy)
         .run();
 }
 
@@ -40,7 +42,7 @@ fn setup(mut commands: Commands, asset_server: Res<AssetServer>) {
         Sprite {
             ..Default::default()
         },
-        Transform::from_scale(Vec3::new(100.0, 100.0, 1.0)),
+        Transform::from_scale(Vec3::new(50.0, 50.0, 1.0)),
     ));
     //黄色い点
     // commands.spawn(
