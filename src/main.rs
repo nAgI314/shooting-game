@@ -31,6 +31,7 @@ fn main() {
         .add_systems(Update, sprite_movement)
         .add_systems(Update, move_player)
         .add_plugins(plugins::enemy::Enemy)
+        .add_plugins(plugins::wall::Wall)
         // .add_systems(Update, move_enemy)
         .run();
 }
@@ -141,5 +142,5 @@ fn move_player(
         delta.x -= speed * time.delta_secs();
     }
 
-    transform.translation += delta;
+    transform.unwrap().translation += delta;
 }
